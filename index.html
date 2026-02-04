@@ -20,8 +20,8 @@
       padding: 30px 25px;
       border-radius: 15px;
       text-align: center;
-      max-width: 350px;
-      width: 90%;
+      max-width: 380px;
+      width: 92%;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
@@ -32,12 +32,35 @@
 
     p {
       color: #444;
-      margin-bottom: 25px;
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+
+    .intro {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .intro.hidden {
+      opacity: 0;
+      transform: translateY(-6px);
+      height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     .buttons {
       position: relative;
       height: 120px;
+      transition: opacity 0.5s ease;
+    }
+
+    .buttons.hidden {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     button {
@@ -59,13 +82,31 @@
       background-color: #ddd;
       color: #333;
       position: absolute;
+      left: 140px;
+      top: 0px;
     }
 
     .love-message {
       display: none;
-      margin-top: 20px;
+      margin-top: 16px;
+      text-align: left;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .love-message p {
+      margin-bottom: 14px;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 18px;
       color: #ff4d6d;
-      font-size: 18px;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -73,46 +114,102 @@
 
   <div class="card">
     <h1>Will you be my Valentine? ❤️</h1>
-    <p>
-      I know we’re miles apart right now,<br>
-      but my heart is right there with you.
-    </p>
 
-    <div class="buttons">
+    <div class="intro" id="introText">
+      <p>
+        I know we’re miles apart right now,<br>
+        but my heart is right there with you.
+      </p>
+    </div>
+
+    <div class="buttons" id="buttonsBox">
       <button id="yesBtn">Yes 💕</button>
       <button id="noBtn">No 🙃</button>
     </div>
 
     <div class="love-message" id="loveMessage">
-      Yay!! 🥹❤️<br>
-      No matter how far from Florida to Portland,<br>
-      or even the moon back to Earth <br>
-      you’ll always be my favorite person.
+
+      <!-- OPTIONAL PHOTO (same page):
+           1) Upload your photo to the repo as "us.jpg"
+           2) Remove the <!-- and --> around the <img> line below
+      -->
+      <!-- <img src="us.jpg" alt="Us" style="width:100%; border-radius:16px; margin: 6px 0 18px 0;"> -->
+
+      <p>
+        I know this season is busy, stressful, and demanding.<br><br>
+        But even on the days when you’re tired,<br>
+        even when we’re miles apart,<br>
+        you are never alone in this.
+      </p>
+
+      <p>
+        I don’t want you to stress about the future.<br>
+        I know I’ve told you a thousand times already,<br>
+        but believe me — I mean it in the deepest way.
+      </p>
+
+      <p>
+        I want to give you a family that never makes you feel left out.<br>
+        A love that feels like home, not pressure.<br>
+        A place where you’re always included, always protected, always held.
+      </p>
+
+      <p>
+        And I want you to know something with all my heart —<br>
+        your family has always felt like mine too.<br>
+        What matters to you matters to me… and it always will.
+      </p>
+
+      <p>
+        No matter what life brings — finances, health, or any challenges —<br>
+        I will hold your hand till my last breath,<br>
+        and I will never let your head hang down for any reason.
+      </p>
+
+      <p>
+        And even if our time has been short,<br>
+        every single day the love in me for you has only grown.<br>
+        It has never dropped — not even once.
+      </p>
+
+      <div class="signature">— Yours ❤️</div>
     </div>
+
   </div>
 
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const loveMessage = document.getElementById("loveMessage");
+    const introText = document.getElementById("introText");
+    const buttonsBox = document.getElementById("buttonsBox");
 
     function moveNoButton() {
       const card = document.querySelector(".card");
-      const maxX = card.offsetWidth - noBtn.offsetWidth;
-      const maxY = card.offsetHeight - noBtn.offsetHeight;
+      const maxX = card.offsetWidth - noBtn.offsetWidth - 10;
+      const maxY = 110; // keep it within the button area
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+      const x = Math.random() * Math.max(40, maxX);
+      const y = Math.random() * Math.max(10, maxY);
 
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     }
 
     noBtn.addEventListener("mouseover", moveNoButton);
-    noBtn.addEventListener("touchstart", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveNoButton();
+    });
 
     yesBtn.addEventListener("click", () => {
+      // fade out the first short message and buttons
+      introText.classList.add("hidden");
+      buttonsBox.classList.add("hidden");
+
+      // reveal the romantic letter (same page)
       loveMessage.style.display = "block";
+      loveMessage.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   </script>
 
