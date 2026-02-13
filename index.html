@@ -4,36 +4,38 @@
   <meta charset="UTF-8" />
   <title>Will You Be My Valentine?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      height: 100vh;
+      min-height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
-      margin: 0;
+      align-items: flex-start;
+      padding: 20px 0;
     }
 
     .card {
       background: white;
       padding: 30px 25px;
-      border-radius: 15px;
-      text-align: center;
+      border-radius: 16px;
       max-width: 380px;
       width: 92%;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
     }
 
     h1 {
       color: #ff4d6d;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     p {
       color: #444;
-      margin-bottom: 16px;
       line-height: 1.55;
+      margin: 0 0 14px 0;
     }
 
     .intro {
@@ -52,7 +54,8 @@
     .buttons {
       position: relative;
       height: 120px;
-      transition: opacity 0.5s ease;
+      margin-top: 10px;
+      transition: opacity 0.4s ease;
     }
 
     .buttons.hidden {
@@ -60,7 +63,6 @@
       height: 0;
       overflow: hidden;
       margin: 0;
-      padding: 0;
     }
 
     button {
@@ -69,13 +71,11 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
     #yesBtn {
       background-color: #ff4d6d;
       color: white;
-      margin-right: 10px;
     }
 
     #noBtn {
@@ -83,7 +83,14 @@
       color: #333;
       position: absolute;
       left: 140px;
-      top: 0px;
+      top: 0;
+    }
+
+    #noMessage {
+      min-height: 24px;
+      margin-top: 8px;
+      color: #ff4d6d;
+      font-weight: 600;
     }
 
     .love-message {
@@ -93,23 +100,28 @@
       animation: fadeIn 0.8s ease;
     }
 
-    .love-message p {
-      margin-bottom: 14px;
-    }
-
     .signature {
       text-align: right;
-      margin-top: 18px;
+      margin-top: 16px;
       color: #ff4d6d;
       font-weight: bold;
     }
 
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      margin: 6px 0 18px 0;
+    }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
 
   <div class="card">
@@ -118,7 +130,7 @@
     <div class="intro" id="introText">
       <p>
         Choose wisely 😉<br>
-  you might not come across a heart like this again.
+        you might not come across a heart like this again.
       </p>
     </div>
 
@@ -127,73 +139,75 @@
       <button id="noBtn">No 🙃</button>
     </div>
 
+    <div id="noMessage"></div>
+
     <div class="love-message" id="loveMessage">
 
-     
-      <img
-  src="us.jpg.JPG"
-  alt="Us"
-  style="width:100%; height:auto; display:block;border-radius:16px; margin: 6px 0 18px 0;"
-/>
-
-     <p>
-  I know you had to click “Yes” ❤️<br>
-  And before anything else thank you.<br>
-  That already means more to me than you know.
-</p>
-
-<p>
-  Hey, listen to me for a moment.<br>
-  I don’t want you to stress about the future.<br>
-  I know I’ve told you a thousand times already,<br>
-  but believe me I mean it in the deepest way.
-</p>
-
-    <p>
-  I want to give you a family that never makes you feel left out.<br>
-  A love that feels like home, not pressure.<br>
-  A place where you’re always included, always protected, always held.<br><br>
-
-  Fair warning though <br>
-  this family comes with a lot of love,<br>
-  random laughter,<br>
-  and me stealing the blanket sometimes.
-</p>
+      <!-- MAKE SURE YOUR IMAGE FILE NAME MATCHES EXACTLY -->
+      <img src="us.jpg.JPG" alt="Us">
 
       <p>
-        And I want you to know this <br>
-  the things that are important to you<br>
-  have quietly become important to me too.<br>
-  It’s something that happened naturally, without forcing it.
+        I know you had to click “Yes” ❤️<br>
+        And before anything else, thank you.<br>
+        That already means more to me than you know.
       </p>
 
-  <p>
-  Life might surprise us, confuse us, or test us<br>
-  but at least one thing is predictable:<br>
-  I’ll be right there, probably overthinking,<br>
-  but never leaving.<br><br>
+      <p>
+        Hey, listen to me for a moment.<br>
+        I don’t want you to stress about the future.<br>
+        I know I’ve told you a thousand times already,<br>
+        but believe me — I mean it in the deepest way.
+      </p>
 
-  No matter what life brings finances, health, or any challenges<br>
-  I will hold your hand till my last breath,<br>
-  and I will never let your head hang down for any reason.
-</p>
+      <p>
+        When I think about us, I don’t imagine pressure.<br>
+        I imagine a love that feels like home.<br>
+        A family that never makes you feel left out.<br>
+        A place where you’re always included, protected, and held.
+      </p>
+
+      <p>
+        Fair warning though —<br>
+        that family comes with a lot of love,<br>
+        random laughter,<br>
+        and me stealing the blanket sometimes.
+      </p>
+
+      <p>
+        Somewhere along the way, without forcing it,<br>
+        the things that are important to you<br>
+        quietly became important to me too.<br>
+        It just happened naturally.
+      </p>
+
+      <p>
+        Life might surprise us, confuse us, or test us.<br>
+        But at least one thing is predictable:<br>
+        I’ll be right there — probably overthinking a little,<br>
+        but never leaving.
+      </p>
+
+      <p>
+        No matter what life brings — finances, health, or any challenges —<br>
+        I will hold your hand till my last breath,<br>
+        and I will never let your head hang down for any reason.
+      </p>
 
       <p>
         And even if our time has been short,<br>
         every single day the love in me for you has only grown.<br>
-        It has never dropped  not even once.
+        It has never dropped — not even once.
       </p>
 
       <p>
         I didn’t fall in love all at once.<br>
-        I fell in love every single day<br>
-        and I still do.<br>
+        I fell in love every single day.<br>
+        And I still do.<br>
         Love you 😘😘😘
       </p>
 
-      <div class="signature">— Yours Ali❤️</div>
+      <div class="signature">Yours, Ali ❤️</div>
     </div>
-
   </div>
 
   <script>
@@ -202,11 +216,23 @@
     const loveMessage = document.getElementById("loveMessage");
     const introText = document.getElementById("introText");
     const buttonsBox = document.getElementById("buttonsBox");
+    const noMessage = document.getElementById("noMessage");
+
+    const noReplies = [
+      "Nice try 😌",
+      "That button is just for decoration 😏",
+      "Plot twist: ‘No’ is not an option 😂",
+      "Your finger almost had it… almost 😭",
+      "Error 404: No not found 💘",
+      "I respect your choice… to choose YES 😇"
+    ];
+
+    let noCount = 0;
 
     function moveNoButton() {
       const card = document.querySelector(".card");
       const maxX = card.offsetWidth - noBtn.offsetWidth - 10;
-      const maxY = 110; // keep it within the button area
+      const maxY = 90;
 
       const x = Math.random() * Math.max(40, maxX);
       const y = Math.random() * Math.max(10, maxY);
@@ -215,20 +241,34 @@
       noBtn.style.top = y + "px";
     }
 
-    noBtn.addEventListener("mouseover", moveNoButton);
+    function showNoReply() {
+      noMessage.textContent = noReplies[Math.min(noCount, noReplies.length - 1)];
+      noCount++;
+    }
+
+    noBtn.addEventListener("mouseover", () => {
+      showNoReply();
+      moveNoButton();
+    });
+
     noBtn.addEventListener("touchstart", (e) => {
       e.preventDefault();
+      showNoReply();
+      moveNoButton();
+    });
+
+    noBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showNoReply();
       moveNoButton();
     });
 
     yesBtn.addEventListener("click", () => {
-      // fade out the first short message and buttons
       introText.classList.add("hidden");
       buttonsBox.classList.add("hidden");
-
-      // reveal the romantic letter (same page)
+      noMessage.textContent = "";
       loveMessage.style.display = "block";
-      loveMessage.scrollIntoView({ behavior: "smooth", block: "start" });
+      loveMessage.scrollIntoView({ behavior: "smooth" });
     });
   </script>
 
