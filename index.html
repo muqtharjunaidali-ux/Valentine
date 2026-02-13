@@ -242,8 +242,8 @@
     }
 
     function showNoReply() {
-      noMessage.textContent = noReplies[Math.min(noCount, noReplies.length - 1)];
-      noCount++;
+  noMessage.textContent = noReplies[noCount % noReplies.length];
+  noCount++;
     }
 
     noBtn.addEventListener("mouseover", () => {
